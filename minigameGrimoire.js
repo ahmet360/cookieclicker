@@ -15,11 +15,11 @@ M.launch=function()
 				desc:'Summon half an hour worth of your CpS, capped at 15% of your cookies owned.',
 				failDesc:'Trigger a 15-minute clot and lose 15 minutes of CpS.',
 				icon:[21,11],
-				costMin:2,
-				costPercent:0.4,
+				costMin:1,
+				costPercent:0.04,
 				win:function()
 				{
-					var val=Math.max(7,Math.min(Game.cookies*0.15,Game.cookiesPs*60*30));
+					var val=Math.max(7,Math.min(Game.cookies*0.25,Game.cookiesPs*60*30));
 					Game.Earn(val);
 					Game.Notify('Conjure baked goods!','You magic <b>'+Beautify(val)+' cookie'+(val==1?'':'s')+'</b> out of thin air.',[21,11],6);
 					Game.Popup('<div style="font-size:80%;">+'+Beautify(val)+' cookie'+(val==1?'':'s')+'!</div>',Game.mouseX,Game.mouseY);
@@ -40,7 +40,7 @@ M.launch=function()
 				failDesc:'Summon an unlucky wrath cookie.',
 				icon:[22,11],
 				costMin:10,
-				costPercent:0.6,
+				costPercent:0.1,
 				failFunc:function(fail)
 				{
 					return fail+0.15*Game.shimmerTypes['golden'].n;
